@@ -1,1 +1,76 @@
+name: Додати канал
 
+on:
+  workflow_dispatch:
+    inputs:
+      link:
+        description: "Посилання на канал"
+        required: true
+      name:
+        description: "Назва каналу"
+        required: false
+        default: "Канал"
+
+permissions:
+  contents: write
+
+jobs:
+  add:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: Перевірити і додати
+        env:
+          CH_URL: ${{ github.event.inputs.link }}
+          CH_NAME: ${{ github.event.inputs.name }}
+        run: |
+          python - <<'PY'
+          import os, sys, requests
+
+          url = os.environ["CH_URL"].strip()
+          name = " ".join(os.environ["CH_NAME"].split()) or "Канал"
+          headers = {"User-Agent": "VLC/3.0.18 LibVLC/3.0.18"}
+
+          def alive(u):
+              try:
+                  r = requests.get(u, headers=headers, stream=True, timeout=(5, 10))
+                  if r.status_code != 200:
+                      return False
+                  if "text/html" in r.headers.get("Content-Type", "").lower():
+                      return False
+                  data = next(r.iter_content(2048), b"")
+                  r.close()
+                  return len(data) > 0
+              except Exception:
+                  return False
+
+          def say(text):
+              print(text)
+              with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
+                  f.write(text + "\n")
+
+          if not alive(url):
+              say("❌ НЕ ПРАЦЮЄ: " + name)
+              sys.exit(1)
+
+          path = "playlist.m3u"
+          text = open(path, encoding="utf-8").read() if os.path.exists(path) else "#EXTM3U\n"
+          if url in text:
+              say("✅ Працює, але вже є в плейлисті: " + name)
+              sys.exit(0)
+          if not text.endswith("\n"):
+              text += "\n"
+          text += "#EXTINF:-1," + name + "\n" + url + "\n"
+          open(path, "w", encoding="utf-8").write(text)
+          say("✅ ПРАЦЮЄ, додано в плейлист: " + name)
+          PY
+      - name: Зберегти
+        run: |
+          git config user.name "bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add playlist.m3u
+          git diff --cached --quiet || (git commit -m "Add channel" && git push)
