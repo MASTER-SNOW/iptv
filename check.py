@@ -1,4 +1,5 @@
-import requests import os.
+import requests 
+ import os
 from concurrent.futures import ThreadPoolExecutor
 
 SOURCES = [
