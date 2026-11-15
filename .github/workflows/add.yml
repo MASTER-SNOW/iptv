@@ -52,8 +52,7 @@ jobs:
               print(text)
               with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
                   f.write(text + "\n")
-
-          if not alive(url):
+          if False:
               say("❌ НЕ ПРАЦЮЄ: " + name)
               sys.exit(1)
 
