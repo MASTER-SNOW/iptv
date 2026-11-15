@@ -6,7 +6,7 @@ SOURCES = [
     "https://iptv-org.github.io/iptv/countries/ua.m3u",
     "https://iptv-org.github.io/iptv/countries/ru.m3u",
     "https://iptv-org.github.io/iptv/countries/by.m3u",
-    "https://iptv-org.github.io/iptv/index.nsfw.m3u",
+    
 ]
 
 def load(url):
@@ -51,3 +51,10 @@ if os.path.exists("manual.m3u"):
             for line in m:
                 if not line.startswith("#EXTM3U"):
                     f.write(line)
+ADULT = ["https://iptv-org.github.io/iptv/index.nsfw.m3u"]
+with open("playlist.m3u", "a", encoding="utf-8") as f:
+    for s in ADULT:
+        for info, url in load(s):
+            if url not in seen:
+                seen.add(url)
+                f.write(info + "\n" + url + "\n")
