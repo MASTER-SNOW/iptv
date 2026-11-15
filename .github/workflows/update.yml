@@ -19,13 +19,13 @@ jobs:
       - run: pip install requests
       - run: cp playlist.m3u old.m3u || touch old.m3u
       - run: python check.py
-            - name: Звіт
+      - name: Звіт
         run: |
           names() { grep '^#EXTINF' "$1" | sed 's/.*,//' | sort -u; }
           names old.m3u > old_names.txt
           names playlist.m3u > new_names.txt
           echo "### Звіт оновлення" >> $GITHUB_STEP_SUMMARY
-          echo "Було: $(names old.m3u | wc -l), стало: $(names playlist.m3u | wc -l)" >> $GITHUB_STEP_SUMMARY
+          echo "Було: $(wc -l < old_names.txt), стало: $(wc -l < new_names.txt)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Додано:**" >> $GITHUB_STEP_SUMMARY
           comm -13 old_names.txt new_names.txt | sed 's/^/- /' >> $GITHUB_STEP_SUMMARY || true
