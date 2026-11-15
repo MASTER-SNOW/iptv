@@ -17,7 +17,19 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install requests
+      - run: cp playlist.m3u old.m3u || touch old.m3u
       - run: python check.py
+      - name: Звіт
+        run: |
+          echo "### Звіт оновлення" >> $GITHUB_STEP_SUMMARY
+          echo "Було каналів: $(grep -c '^#EXTINF' old.m3u)" >> $GITHUB_STEP_SUMMARY
+          echo "Стало каналів: $(grep -c '^#EXTINF' playlist.m3u)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Додано:**" >> $GITHUB_STEP_SUMMARY
+          comm -13 <(grep '^#EXTINF' old.m3u | sort) <(grep '^#EXTINF' playlist.m3u | sort) | sed 's/^#EXTINF:-1,/- /' >> $GITHUB_STEP_SUMMARY || true
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Видалено:**" >> $GITHUB_STEP_SUMMARY
+          comm -23 <(grep '^#EXTINF' old.m3u | sort) <(grep '^#EXTINF' playlist.m3u | sort) | sed 's/^#EXTINF:-1,/- /' >> $GITHUB_STEP_SUMMARY || true
       - run: |
           git config user.name "bot"
           git config user.email "bot@example.com"
