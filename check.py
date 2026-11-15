@@ -51,7 +51,7 @@ if os.path.exists("manual.m3u"):
             for line in m:
                 if not line.startswith("#EXTM3U"):
                     f.write(line)
-ADULT = ["https://iptv-org.github.io/iptv/index.nsfw.m3u"]
+ADULT = ["https://iptv-org.github.io/iptv/categories/xxx.m3u"]
 with open("playlist.m3u", "a", encoding="utf-8") as f:
     for s in ADULT:
         for info, url in load(s):
