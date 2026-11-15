@@ -371,8 +371,6 @@ http://88.218.242.237:8001/Cartoon_Classics
 http://31.148.5.241/kanal_5/index.m3u8
 #EXTINF:-1 tvg-id="Channel8.ru@SD" tvg-logo="https://i.imgur.com/nUSx1jF.png" group-title="Entertainment",Channel 8 (Russia) (576p)
 http://45.11.139.43:8555/8kanal/index.m3u8
-#EXTINF:-1 tvg-id="Channel8Krasnoyarsk.ru@HD" tvg-logo="https://i.imgur.com/q3JCAC3.png" http-referrer="https://tshift-1.telecoma.tv/8channel/tracks-v1a1/mono.ts.m3u8" http-user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 Edg/150.0.0.0" group-title="General",Channel 8 Krasnoyarsk HD (1080p)
-https://tshift-1.telecoma.tv/8channel/tracks-v1a1/mono.ts.m3u8
 #EXTINF:-1 tvg-id="Channel8Novosibirsk.ru@SD" tvg-logo="https://i.imgur.com/eHGETvU.png" http-user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 Edg/150.0.0.0" group-title="General",Channel 8 Novosibirsk (480i)
 https://live-8knsk.cdnvideo.ru/8knsk/stream1/playlist.m3u8
 #EXTINF:-1 tvg-id="Channel10.ru@SD" tvg-logo="https://i.imgur.com/k8JjFDw.png" group-title="General",Channel 10 (Russia) (576i)
@@ -381,8 +379,6 @@ https://bl.rutube.ru/livestream/c9e26bf5c003fd8d477200065ca1a05f/index.m3u8?e=20
 https://12channel.bonus-tv.ru/cdn/12channel/playlist.m3u8
 #EXTINF:-1 tvg-id="Channel16.ru@SD" tvg-logo="https://i.imgur.com/7tNDKHe.png" group-title="General",Channel-16 (406p) [Not 24/7]
 http://serv25.vintera.tv:8081/test/k16/playlist.m3u8
-#EXTINF:-1 tvg-id="Che.ru@SD" tvg-logo="https://i.imgur.com/ZOcDGpB.png" group-title="Entertainment",Che! (576p)
-http://176.118.197.101/Che/index.m3u8
 #EXTINF:-1 tvg-id="CityEdenAutoGid.ru@HD" tvg-logo="https://i.imgur.com/qpe8L27.png" group-title="Auto",City Eden AutoGid [Not 24/7]
 https://cityeden.catcast.tv/content/47515/index.m3u8
 #EXTINF:-1 tvg-id="CityEdenBirmaPlay.ru@HD" tvg-logo="https://i.imgur.com/38Q5L5W.png" group-title="Music",City Eden Birma Play [Not 24/7]
@@ -527,8 +523,6 @@ http://176.118.197.101/KinoTvHD/playlist.m3u8
 http://stream.mcquack.net/126/index.m3u8
 #EXTINF:-1 tvg-id="Kinokomedija.ru@SD" tvg-logo="https://i.imgur.com/dVjtth0.png" group-title="Comedy",Kinokomedija (576p)
 http://stream.mcquack.net/265/index.m3u8
-#EXTINF:-1 tvg-id="Kinomix.ru@SD" tvg-logo="https://i.imgur.com/D4q2XUT.png" group-title="Movies",Kinomix (576p)
-http://93.170.254.17/Kinomiks/index.m3u8
 #EXTINF:-1 tvg-id="Kinopokaz.ru@SD" tvg-logo="https://i.imgur.com/nNjMyAq.png" group-title="Movies",Kinopokaz (576p)
 http://stream.mcquack.net/64/index.m3u8
 #EXTINF:-1 tvg-id="Kinosemja.ru@SD" tvg-logo="https://i.imgur.com/4BF5VeK.png" group-title="Movies",Kinosemja (576p)
@@ -997,6 +991,8 @@ https://ngtrk.dc.beltelecom.by/vtv/bt4.stream/playlist.m3u8
 https://ngtrk.dc.beltelecom.by/ngtrk/smil:belarus5.smil/playlist.m3u8
 #EXTINF:-1 tvg-id="Belarus5.by@HD" tvg-logo="https://i.imgur.com/NJsRFud.png" group-title="Sports",Belarus-5 HD (1080p)
 http://178.124.179.122:8080/BT5/index.m3u8
+#EXTINF:-1 tvg-id="Belarus5.by@Internet" tvg-logo="https://i.imgur.com/NJsRFud.png" group-title="Sports",Belarus-5 Internet (1080p) [Not 24/7]
+https://edge59.dc.beltelecom.by/ngtrk/smil:belarus5int.smil/playlist.m3u8
 #EXTINF:-1 tvg-id="Belarus24.by@SD" tvg-logo="https://i.imgur.com/BP7tY6F.png" group-title="News",Belarus-24 (576p)
 http://ott-7.sevstar.net/belarus24/index.m3u8
 #EXTINF:-1 tvg-id="Belarus24.by@HD" tvg-logo="https://i.imgur.com/BP7tY6F.png" group-title="News",Belarus-24 HD (1080p)
