@@ -19,17 +19,19 @@ jobs:
       - run: pip install requests
       - run: cp playlist.m3u old.m3u || touch old.m3u
       - run: python check.py
-      - name: Звіт
+            - name: Звіт
         run: |
+          names() { grep '^#EXTINF' "$1" | sed 's/.*,//' | sort -u; }
+          names old.m3u > old_names.txt
+          names playlist.m3u > new_names.txt
           echo "### Звіт оновлення" >> $GITHUB_STEP_SUMMARY
-          echo "Було каналів: $(grep -c '^#EXTINF' old.m3u)" >> $GITHUB_STEP_SUMMARY
-          echo "Стало каналів: $(grep -c '^#EXTINF' playlist.m3u)" >> $GITHUB_STEP_SUMMARY
+          echo "Було: $(names old.m3u | wc -l), стало: $(names playlist.m3u | wc -l)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Додано:**" >> $GITHUB_STEP_SUMMARY
-          comm -13 <(grep '^#EXTINF' old.m3u | sort) <(grep '^#EXTINF' playlist.m3u | sort) | sed 's/^#EXTINF:-1,/- /' >> $GITHUB_STEP_SUMMARY || true
+          comm -13 old_names.txt new_names.txt | sed 's/^/- /' >> $GITHUB_STEP_SUMMARY || true
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Видалено:**" >> $GITHUB_STEP_SUMMARY
-          comm -23 <(grep '^#EXTINF' old.m3u | sort) <(grep '^#EXTINF' playlist.m3u | sort) | sed 's/^#EXTINF:-1,/- /' >> $GITHUB_STEP_SUMMARY || true
+          comm -23 old_names.txt new_names.txt | sed 's/^/- /' >> $GITHUB_STEP_SUMMARY || true
       - run: |
           git config user.name "bot"
           git config user.email "bot@example.com"
