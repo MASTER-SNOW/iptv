@@ -6,7 +6,7 @@ SOURCES = [
     "https://iptv-org.github.io/iptv/countries/ua.m3u",
     "https://iptv-org.github.io/iptv/countries/ru.m3u",
     "https://iptv-org.github.io/iptv/countries/by.m3u",
-    
+    playlist_ukraine.m3u8 і dearbulut ua.m3u.
 ]
 
 def load(url):
