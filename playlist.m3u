@@ -213,8 +213,6 @@ https://streaming.televizor-24-tochka.ru/live/27.m3u8
 http://stream.mcquack.net/323/index.m3u8
 #EXTINF:-1 tvg-id="PLUSPLUS.ua@SD" tvg-logo="https://i.imgur.com/9bPhStm.png" http-user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" group-title="Kids",PLUSPLUS (1080p)
 http://stream.mcquack.net/339/index.m3u8
-#EXTINF:-1 tvg-id="PTV.ua@SD" tvg-logo="https://i.imgur.com/WDHoSVz.png" group-title="News",PTV (Ukraine) (720p)
-https://cdn15.live-tv.cloud/ua_infinitas_tv/hrpl-abr/playlist.m3u8
 #EXTINF:-1 tvg-id="RadaTV.ua@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Rada_TV_%282021%29.svg/960px-Rada_TV_%282021%29.svg.png" group-title="Legislative",Rada TV (720p)
 https://cdn15.live-tv.cloud/ua_infinitas_tv/rada-abr/playlist.m3u8
 #EXTINF:-1 tvg-id="RAZ1.ua@SD" tvg-logo="https://s2.vcdn.biz/static/f/7607683721/image.jpg/pt/c192x192x4" group-title="Entertainment",RAZ 1 (1080p)
@@ -365,8 +363,6 @@ https://xykt-fix.github.io/cinerama_edge01/hls/BOLLYWOOD_RU/Movie009.m3u8
 http://178.134.1.158:8081/BRIDGE/index.m3u8
 #EXTINF:-1 tvg-id="BRIDGEDeluxe.ru@HD" tvg-logo="https://i.imgur.com/EazL8w7.png" group-title="Music",BRIDGE Deluxe HD (576p)
 http://stream.mcquack.net/92/index.m3u8
-#EXTINF:-1 tvg-id="BRIDGEHits.ru@SD" tvg-logo="https://i.imgur.com/sIW9oR4.png" group-title="Music",BRIDGE Hits (576p)
-http://5.188.159.128:8070/Bridge_TV_Hits/index.m3u8
 #EXTINF:-1 tvg-id="BRIDGERock.ru@SD" tvg-logo="https://i.imgur.com/MHuwct2.png" group-title="Music",BRIDGE Rock (576p)
 http://178.134.1.158:8081/BRIDGEROCK/index.m3u8
 #EXTINF:-1 tvg-id="BST.ru@SD" tvg-logo="https://i.imgur.com/IDotHmQ.png" group-title="Undefined",BST (576p)
