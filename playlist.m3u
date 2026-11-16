@@ -1045,3 +1045,5 @@ https://fs.uplink.kz/tnt4/mono.m3u8?token=onlinetv
 http://46.53.200.153:7777/play/a00h/index.m3u8
 #EXTINF:-1 tvg-id="VoyenTV.by@SD" tvg-logo="https://beltelecom.by/sites/default/files/2026-02/img-news-btk-new-channel-voentv_0.png" group-title="General",VoyenTV (1080p)
 http://media1.skifnet.by/voentv/index.m3u8
+#EXTINF:-1 tvg-id="M1.ua@SD" tvg-logo="https://i.imgur.com/wbRdUw8.png" group-title="Music",M1 (Ukraine) (1080p)
+http://dtv.vol.net.ua/M1-HD/index.m3u8
