@@ -6,7 +6,10 @@ SOURCES = [
     "https://iptv-org.github.io/iptv/countries/ua.m3u",
     "https://iptv-org.github.io/iptv/countries/ru.m3u",
     "https://iptv-org.github.io/iptv/countries/by.m3u",
-    
+    "https://dearbulut.github.io/iptv/playlists/country/by.m3u"
+    "https://dearbulut.github.io/iptv/playlists/country/ua.m3u"
+    "https://dearbulut.github.io/iptv/playlists/country/ru.m3"
+  
 ]
 
 
