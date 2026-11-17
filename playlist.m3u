@@ -309,8 +309,6 @@ http://176.118.197.101/2x2/index.m3u8
 https://hls.tv.3angels.ru/stream.m3u8
 #EXTINF:-1 tvg-id="5minuttishiny.ru@SD" tvg-logo="https://cdn2-static.ntv.ru/home/promo/24740/5minut_live.jpg" group-title="Series",5 minut tishiny (1080p)
 https://cdn-dvr.ntv.ru/5_minut_tishiny/index.m3u8
-#EXTINF:-1 tvg-id="86.ru@SD" tvg-logo="https://i.imgur.com/0dRS4Cb.png" group-title="General",86 (1080p) [Not 24/7]
-https://sitv.ru/hls/s86.m3u8
 #EXTINF:-1 tvg-id="360.ru@SD" tvg-logo="https://i.imgur.com/VTJqdoX.png" group-title="General",360° (1080p)
 https://cdn-evacoder-tv.facecast.io/evacoder_hls_hi/CkxfR1xNUAJwTgtXTBZTAJli/index.m3u8
 #EXTINF:-1 tvg-id="360News.ru@SD" tvg-logo="https://i.imgur.com/YXDeX8q.png" group-title="News",360° News (1080p)
@@ -389,6 +387,8 @@ https://12channel.bonus-tv.ru/cdn/12channel/playlist.m3u8
 http://serv25.vintera.tv:8081/test/k16/playlist.m3u8
 #EXTINF:-1 tvg-id="CityEdenAutoGid.ru@HD" tvg-logo="https://i.imgur.com/qpe8L27.png" group-title="Auto",City Eden AutoGid [Not 24/7]
 https://cityeden.catcast.tv/content/47515/index.m3u8
+#EXTINF:-1 tvg-id="CityEdenBirmaPlay.ru@HD" tvg-logo="https://i.imgur.com/38Q5L5W.png" group-title="Music",City Eden Birma Play [Not 24/7]
+https://cityeden.catcast.tv/content/34364/index.m3u8
 #EXTINF:-1 tvg-id="CityEdenClassicMusic.ru@HD" tvg-logo="https://i.imgur.com/l7BE8l6.png" group-title="Music",City Eden Classic Music [Not 24/7]
 https://cityeden.catcast.tv/content/47400/index.m3u8
 #EXTINF:-1 tvg-id="CityEdenKinoAction.ru@HD" tvg-logo="https://i.imgur.com/uuzuvD0.png" group-title="Movies",City Eden KinoAction [Not 24/7]
@@ -557,8 +557,6 @@ https://cdn4.yayin.com.tr/kntv/tracks-v1a1/mono.m3u8
 http://176.118.197.101/Komediya/index.m3u8
 #EXTINF:-1 tvg-id="Komediynoe.ru@HD" tvg-logo="https://i.imgur.com/cEKe8XC.png" group-title="Comedy",Komediynoe HD (1080p)
 http://stream.mcquack.net/74/index.m3u8
-#EXTINF:-1 tvg-id="KongressTV.ru@SD" tvg-logo="https://tvcongress.ru/bitrix/templates/mbntheme/img/logo_tvc.svg" group-title="General",Kongress TV (1080p)
-https://live-3.otcnet.ru/congresstv/index.m3u8
 #EXTINF:-1 tvg-id="KrikTV.ru@SD" tvg-logo="https://i.imgur.com/rtuChZR.png" group-title="News",Krik-TV (1080p)
 http://cdn-01.bonus-tv.ru/kriktv_edge/playlist.m3u8
 #EXTINF:-1 tvg-id="Kuban24.ru@SD" tvg-logo="https://i.imgur.com/atzrXcz.png" http-user-agent="WINK/1.40.1 (AndroidTV/9) HlsWinkPlayer" group-title="General",Kuban 24 SD [Geo-blocked]
@@ -1043,6 +1041,10 @@ https://dash2.antik.sk/live/kvartal_tv/playlist.m3u8
 http://stream.mcquack.net/461/index.m3u8
 #EXTINF:-1 tvg-name="Беларусь 1" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Belarus_1_logo.svg/960px-Belarus_1_logo.svg.png" tvg-id="Belarus1.by" tvg-chno="1" tvg-country="BY" group-title="Belarus",Беларусь 1
 https://edge55.dc.beltelecom.by/ngtrk/smil:belarus1.smil/playlist.m3u8
+#EXTINF:-1 tvg-name="Беларусь 2" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Belarus_2_logo.svg/960px-Belarus_2_logo.svg.png" tvg-id="Belarus2.by" tvg-country="BY" group-title="Belarus",Беларусь 2
+https://edge55.dc.beltelecom.by/ngtrk/smil:belarus2.smil/playlist.m3u8
+#EXTINF:-1 tvg-name="Беларусь 3" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Belarus_3_logo.svg/960px-Belarus_3_logo.svg.png" tvg-id="Belarus3.by" tvg-country="BY" group-title="Belarus",Беларусь 3
+https://edge55.dc.beltelecom.by/ngtrk/smil:belarus3.smil/playlist.m3u8
 #EXTINF:-1 tvg-name="ОНТ" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D1%82%D0%B5%D0%BB%D0%B5%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%C2%AB%D0%9E%D0%9D%D0%A2%C2%BB.svg/960px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D1%82%D0%B5%D0%BB%D0%B5%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%C2%AB%D0%9E%D0%9D%D0%A2%C2%BB.svg.png" tvg-id="ONT.by" tvg-chno="4" tvg-country="BY" group-title="Belarus",ОНТ Ⓢ
 https://ngtrk.dc.beltelecom.by/ngtrk/smil:ont.smil/playlist.m3u8
 #EXTINF:-1 tvg-name="Беларусь 5" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Belarus_5_logo.svg/960px-Belarus_5_logo.svg.png" tvg-id="Belarus5.by" tvg-country="BY" group-title="Belarus",Беларусь 5
@@ -1089,6 +1091,8 @@ https://live.smotrim.ru/vgtrk/0/russia1-hd/index.m3u8
 https://streaming102.interskytech.com/live/232.m3u8
 #EXTINF:-1 tvg-name="Звезда" tvg-logo="https://i.imgur.com/c0L0ncA.png" tvg-id="TelekanalZvezda.ru" tvg-chno="18" tvg-country="RU" group-title="Russia",Звезда
 https://tvchannelstream1.tvzvezda.ru/cdn/tvzvezda/playlist.m3u8
+#EXTINF:-1 tvg-name="Муз-ТВ" tvg-logo="https://i.imgur.com/Ml3qqOF.png" tvg-id="MuzTV.ru" tvg-chno="21" tvg-country="RU" group-title="Russia",Муз-ТВ Ⓢ
+https://streaming102.interskytech.com/live/618.m3u8
 #EXTINF:-1 tvg-name="CGTN Pусский" tvg-logo="https://i.imgur.com/fMsJYzl.png" tvg-id="CGTNRussian.cn" tvg-chno="24" tvg-country="RU" group-title="Russia",CGTN Pусский
 https://news.cgtn.com/resource/live/russian/cgtn-r.m3u8
 #EXTINF:-1 tvg-name="Че" tvg-logo="" tvg-id="PeretzInternational.ru" tvg-chno="27" tvg-country="RU" group-title="Russia",Че
@@ -1117,6 +1121,10 @@ http://cdnua05.hls.tv/919/hls/8743361621b245838bee193c9ec28322/4835/stream.m3u8
 http://cdnua05.hls.tv/624/hls/f62d71219200da4130d13b21d23fb23c/4896/stream.m3u8
 #EXTINF:-1 tvg-name="M1" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/M1_%28Ukraine%29_%282001-2021%29.svg/960px-M1_%28Ukraine%29_%282001-2021%29.svg.png" tvg-id="M1.ua" tvg-chno="15" tvg-country="UA" group-title="Ukraine",M1
 http://stream.mcquack.net/218/index.m3u8
+#EXTINF:-1 tvg-name="NTN" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/NTNUA_logo_%282013%29.svg/500px-NTNUA_logo_%282013%29.svg.png" tvg-id="NTN.ua" tvg-chno="17" tvg-country="UA" group-title="Ukraine",NTN
+https://cdn15.live-tv.cloud/ua_infinitas_tv/ntn-abr/playlist.m3u8
+#EXTINF:-1 tvg-name="Mega" tvg-logo="https://i.imgur.com/F1v69tn.png" tvg-id="Mega.ua" tvg-chno="18" tvg-country="UA" group-title="Ukraine",Mega
+https://cdn15.live-tv.cloud/ua_infinitas_tv/mega-abr/playlist.m3u8
 #EXTINF:-1 tvg-name="XSport" tvg-logo="https://i.imgur.com/CHDcfrT.png" tvg-id="XSport.ua" tvg-chno="23" tvg-country="UA" group-title="Ukraine",XSport Ⓢ
 http://cdnua05.hls.tv/946/hls/8743361621b245838bee193c9ec28322/3999/stream.m3u8
 #EXTINF:-1 tvg-name="Піксель TV" tvg-logo="https://i.imgur.com/ECro8Ah.png" tvg-id="PixelTV.ua" tvg-chno="25" tvg-country="UA" group-title="Ukraine",Піксель TV
@@ -1783,6 +1791,8 @@ https://stream8.cinerama.uz/1055/index.m3u8
 http://176.118.197.101/Cinema/index.m3u8
 #EXTINF:-1 group-title="Кино" tvg-id="cinema-ru" tvg-logo="https://ngrch.github.io/iptv/logos/cinema.png", Cinema (2)
 https://stream8.cinerama.uz/1227/index.m3u8
+#EXTINF:-1 group-title="Кино" tvg-id="muzhskoe-kino" tvg-logo="https://ngrch.github.io/iptv/logos/muzhskoe.png", Мужское кино
+https://stream8.cinerama.uz/1237/index.m3u8
 #EXTINF:-1 group-title="Кино", .Red
 http://stream.mcquack.net/69/index.m3u8
 #EXTINF:-1 group-title="Кино", .Red (2)
@@ -2047,6 +2057,8 @@ https://zabava-htlive.cdn.ngenix.net/hls/CH_DISNEY_2/variant.m3u8
 https://zabava-htlive.cdn.ngenix.net/hls/CH_DISNEY_4/variant.m3u8
 #EXTINF:-1 group-title="Детские" tvg-id="solnce-pl7" tvg-logo="https://ngrch.github.io/iptv/logos/solnce.png", Солнце +7
 https://zabava-htlive.cdn.ngenix.net/hls/CH_DISNEY_7/variant.m3u8
+#EXTINF:-1 group-title="Детские", СТС Kids
+https://stream8.cinerama.uz/1437/index.m3u8
 #EXTINF:-1 group-title="Детские", СТС Kids (2)
 http://stream.mcquack.net/197/index.m3u8
 #EXTINF:-1 group-title="Детские", Fan
@@ -2055,8 +2067,6 @@ http://stream.mcquack.net/420/index.m3u8
 https://stream8.cinerama.uz/1244/index.m3u8
 #EXTINF:-1 group-title="Детские", Мама (2)
 http://stream.mcquack.net/79/index.m3u8
-#EXTINF:-1 group-title="Детские", Ducktv
-https://stream8.cinerama.uz/1271/index.m3u8
 #EXTINF:-1 group-title="Детские", NickToons
 https://stream8.cinerama.uz/1502/index.m3u8
 #EXTINF:-1 group-title="Детские", Nickelodeon
@@ -2287,20 +2297,10 @@ https://kinowalk.hopto.org/legion-tv_live
 https://kinowalk.hopto.org/video_prokat_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", MovieToper
 https://kinowalk.hopto.org/movietoper_live
-#EXTINF:-1 group-title="Кинозалы Kinowalk", TimeToHorror
-https://kinowalk.hopto.org/timetohorror_live
-#EXTINF:-1 group-title="Кинозалы Kinowalk", TimeToMovie
-https://kinowalk.hopto.org/timetomovie_live
-#EXTINF:-1 group-title="Кинозалы Kinowalk", Blockbusters Time
-https://kinowalk.hopto.org/blockbusterstime_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", Kinolampa
 https://kinowalk.hopto.org/kinolampa_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", VideoArsenal
 https://kinowalk.hopto.org/videoarsenal_live
-#EXTINF:-1 group-title="Кинозалы Kinowalk", Kino Jam
-https://kinowalk.hopto.org/kinojam_live
-#EXTINF:-1 group-title="Кинозалы Kinowalk", Scripach
-https://kinowalk.hopto.org/scripachtv_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", SeleCaoTV
 https://kinowalk.hopto.org/selecaotv_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", SeleCaoTV1
@@ -2319,6 +2319,8 @@ https://kinowalk.hopto.org/baragozz_tv_live
 https://kinowalk.hopto.org/miiz90x_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", Aisman
 https://kinowalk.hopto.org/aisman_live
+#EXTINF:-0 group-title="Кинозалы Kinowalk", VHS Forever
+https://kinowalk.hopto.org/vhs-forever_live
 #EXTINF:-0 group-title="Кинозалы Kinowalk", LampoTV
 https://kinowalk.hopto.org/lampotv_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", Video Channel
@@ -2327,10 +2329,16 @@ https://kinowalk.hopto.org/video_channel_live
 https://kinowalk.hopto.org/swat2k_live
 #EXTINF:-0 group-title="Кинозалы Kinowalk", Wfliq
 https://kinowalk.hopto.org/wfliq_live
+#EXTINF:-1 group-title="Кинозалы Kinowalk", Комедии
+https://kinowalk.hopto.org/cmexye4ku_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", Эквилибриум
 https://kinowalk.hopto.org/equilibrium_live
+#EXTINF:-1 group-title="Кинозалы Kinowalk", ChowAmigo
+https://kinowalk.hopto.org/chowamigo_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", TopMoment
 https://kinowalk.hopto.org/topmoment_live
+#EXTINF:-1 group-title="Кинозалы Kinowalk", TopMoment Live
+https://kinowalk.hopto.org/topmomentlive_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", Назад в СССР
 https://kinowalk.hopto.org/backtotheussr_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", VHS кино
@@ -2359,10 +2367,20 @@ https://kinowalk.hopto.org/toxa_stream_live
 https://kinowalk.hopto.org/ostorozhnomodern2_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", У края бездны
 https://kinowalk.hopto.org/ddator_live
+#EXTINF:-1 group-title="Кинозалы Kinowalk", MAX
+https://kinowalk.hopto.org/maximum_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", NEZABUDKA
 https://kinowalk.hopto.org/nezabudka_live
+#EXTINF:-1 group-title="Кинозалы Kinowalk", FRXNKL1N
+https://kinowalk.hopto.org/frxnkl1n_live
+#EXTINF:-1 group-title="Кинозалы Kinowalk", Кладовая Фильмов
+https://kinowalk.hopto.org/skladfilm_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", RE_BOOT
 https://kinowalk.hopto.org/re_boot_live
+#EXTINF:-1 group-title="Кинозалы Kinowalk", 1st_witch
+https://kinowalk.hopto.org/witch_live
+#EXTINF:-1 group-title="Кинозалы Kinowalk", Мир Ехо
+https://kinowalk.hopto.org/mirdobro_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", Эра VHS
 https://kinowalk.hopto.org/vhs90s_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", АPRICUS
@@ -2831,8 +2849,6 @@ https://rt-sib-nvkz-htlive.cdn.ngenix.net/hls/CH_R01_PROJIZN/variant.m3u8
 https://rt-sib-kem-htlive.cdn.ngenix.net/hls/CH_R01_OTT_SIB_KEM_GTRK/variant.m3u8
 #EXTINF:-1 group-title="Региональные", ЗРТК | Забайкальский край
 https://rt-sib-chita-htlive.cdn.ngenix.net/hls/CH_R01_RTKZAB/variant.m3u8
-#EXTINF:-1 group-title="Региональные", ЗРТК (2) | Забайкальский край
-https://stream.zrtk.ru/zrtk.m3u8
 #EXTINF:-1 group-title="Региональные", Регион 29 | Архангельск
 https://rt-nw-arkh-htlive.cdn.ngenix.net/hls/CH_R02_PRAVDASEVERA/variant.m3u8
 #EXTINF:-1 group-title="Региональные", Русский Север | Вологодская область
@@ -2999,3 +3015,5 @@ http://212.2.225.30:1935/live/site.stream/playlist.m3u8
 https://tsv.md/stream/hls/tsv-online/index.m3u8
 #EXTINF:-1 group-title="Региональные", Аист | Орехово-Зуево
 http://141.101.205.134:8080/hls/tvaist.m3u8
+#EXTINF:-1 group-title="Региональные", Кварц | Подольск
+http://109.94.1.3/25/index.m3u8
