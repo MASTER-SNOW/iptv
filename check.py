@@ -32,7 +32,7 @@ def tvg_id(info):
 def alive(url):
     try:
         r = requests.get(url, stream=True, timeout=8)
-        ok = r.status_code == 200
+        ok = r.status_code in (200, 403, 451)
         r.close()
         return ok
     except Exception:
