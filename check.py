@@ -247,6 +247,60 @@ def parse_m3u(text):
             info = None
 
     return items
+    
+def parse_m3u(text):
+
+    items = []
+    info = None
+
+    for line in text.splitlines():
+
+        line = line.strip()
+
+        if line.startswith("#EXTINF"):
+            info = line
+
+        elif line.startswith("http") and info:
+            items.append((info, line))
+            info = None
+
+    return items
+
+
+# ФІЛЬТР КРАЇН
+def is_target_channel(info, source):
+    allowed = {
+        "UA", "UKR", "UKRAINE",
+        "RU", "RUS", "RUSSIA",
+        "BY", "BLR", "BEL", "BELARUS"
+    }
+
+    import re
+
+    match = re.search(
+        r'tvg-country="([^"]+)"',
+        info,
+        re.IGNORECASE
+    )
+
+    if match:
+        countries = re.split(r'[,;|]', match.group(1))
+        return any(c.strip().upper() in allowed for c in countries)
+
+    url = source.get("url", "").lower()
+
+    return any(
+        path in url
+        for path in (
+            "/countries/ua.m3u",
+            "/countries/ru.m3u",
+            "/countries/by.m3u"
+        )
+    )
+
+
+def load_
+    source(source):
 
 
 def load_source(source):
