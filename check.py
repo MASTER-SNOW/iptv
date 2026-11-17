@@ -419,12 +419,15 @@ def build():
         continue
 
     # Видаляємо тільки однакові URL
-    for info, url in manual_items:
+            for info, url in items:
 
-    if not is_target_channel(info, {"url": ""}):
-        continue
+            # Фільтр країн
+            if not is_target_channel(info, source):
+                continue
 
-    if url not in seen_urls:
+            # Видаляємо однакові посилання
+            if url in seen_urls:
+                continue
 
             seen_urls.add(url)
 
