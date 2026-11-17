@@ -361,9 +361,13 @@ def build():
 
         for info, url in items:
 
-            # Видаляємо тільки абсолютно однакові URL
-            if url in seen_urls:
-                continue
+    # Залишаємо тільки Україну, Росію та Білорусь
+    if not is_target_channel(info, source):
+        continue
+
+    # Видаляємо тільки однакові URL
+    if url in seen_urls:
+        continue
 
             seen_urls.add(url)
 
