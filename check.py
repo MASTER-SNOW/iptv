@@ -1,15 +1,11 @@
-
 import os
+import re
 import json
 import time
 import requests
 from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import quote
-
-# =====================================
-# НАЛАШТУВАННЯ
-# =====================================
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 
@@ -18,46 +14,28 @@ REGISTRY = os.path.join(BASE, "sources.json")
 HISTORY = os.path.join(BASE, "history.json")
 MANUAL = os.path.join(BASE, "manual.m3u")
 
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 IPTV-Collector/2.0"
-}
+HEADERS = {"User-Agent": "Mozilla/5.0 IPTV-Collector/2.0"}
 
-# Якщо є GitHub token, можна вставити його сюди.
-# Не публікуй цей токен і не передавай його іншим.
-GITHUB_TOKEN = ""
-
-if GITHUB_TOKEN:
-    HEADERS["Authorization"] = "Bearer " + GITHUB_TOKEN
-
-# Початкові джерела
 INITIAL_SOURCES = [
     "https://iptv-org.github.io/iptv/countries/ua.m3u",
     "https://iptv-org.github.io/iptv/countries/ru.m3u",
     "https://iptv-org.github.io/iptv/countries/by.m3u",
     "https://iptv-org.github.io/iptv/languages/ukr.m3u",
-    "https://iptv-org.github.io/iptv/languages/rus.m3u",
-    "https://iptv-org.github.io/iptv/languages/bel.m3u",
-    "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8"
+    "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8",
 ]
 
-# Запити для пошуку нових GitHub-репозиторіїв
 SEARCH_QUERIES = [
-    "iptv m3u",
-    "iptv playlist",
-    "m3u8 tv channels",
-    "iptv Ukraine",
-    "iptv Russia",
-    "iptv Belarus"
+    "iptv ukraine m3u",
+    "iptv belarus m3u",
+    "iptv russia m3u",
 ]
 
-MAX_REPOS_PER_QUERY = 8
-MAX_FILES_PER_REPO = 5
-MAX_WORKERS = 20
+KEYWORDS = ("ua", "ukr", "ukraine", "ru", "rus", "by", "bel", "belarus")
 
+MAX_REPOS_PER_QUERY = 5
+MAX_FILES_PER_REPO = 3
+MAX_WORKERS = 30
 
-# =====================================
-# РОБОТА З ФАЙЛАМИ
-# =====================================
 
 def read_json(path, default):
     try:
@@ -72,462 +50,173 @@ def save_json(path, data):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
-def get_sources():
-    saved = read_json(REGISTRY, [])
-    sources = []
-
-    for url in INITIAL_SOURCES:
-        sources.append({
-            "url": url,
-            "name": "Основне джерело"
-        })
-
-    for item in saved:
-        if isinstance(item, dict):
-            sources.append(item)
-
-    result = []
-    seen = set()
-
-    for item in sources:
-        url = item.get("url", "")
-        if url.startswith("http") and url not in seen:
-            seen.add(url)
-            result.append(item)
-
-    return result
+def load_text(url):
+    return requests.get(url, headers=HEADERS, timeout=30).text
 
 
-# =====================================
-# ПОШУК НОВИХ ДЖЕРЕЛ GITHUB
-# =====================================
+def parse_m3u(text):
+    items, info = [], None
+    for line in text.splitlines():
+        line = line.strip()
+        if line.startswith("#EXTINF"):
+            info = line
+        elif line.startswith("http") and info:
+            items.append((info, line))
+            info = None
+    return items
+
+
+def is_target_channel(info, source_url):
+    allowed = {"UA", "UKR", "UKRAINE", "RU", "RUS", "RUSSIA", "BY", "BLR", "BEL", "BELARUS"}
+    match = re.search(r'tvg-country="([^"]+)"', info, re.IGNORECASE)
+    if match:
+        countries = re.split(r"[,;|]", match.group(1))
+        return any(c.strip().upper() in allowed for c in countries)
+    return True
+
 
 def discover_github():
-    print("\nШукаю нові GitHub-репозиторії...")
-
     found = []
-
     for query in SEARCH_QUERIES:
-        print("Пошук:", query)
-
         try:
-            response = requests.get(
+            r = requests.get(
                 "https://api.github.com/search/repositories",
-                params={
-                    "q": query,
-                    "sort": "updated",
-                    "order": "desc",
-                    "per_page": 20
-                },
+                params={"q": query, "sort": "updated", "per_page": 20},
                 headers=HEADERS,
-                timeout=20
+                timeout=20,
             )
-
-            if response.status_code != 200:
-                print("GitHub API:", response.status_code)
+            if r.status_code != 200:
                 continue
-
-            repos = response.json().get("items", [])
-
-            for repo in repos[:MAX_REPOS_PER_QUERY]:
-
+            for repo in r.json().get("items", [])[:MAX_REPOS_PER_QUERY]:
                 if repo.get("archived"):
                     continue
-
                 name = repo["full_name"]
                 branch = repo.get("default_branch", "master")
-
                 try:
-                    tree_url = (
-                        f"https://api.github.com/repos/"
-                        f"{name}/git/trees/{quote(branch, safe='/')}"
-                    )
-
-                    tree_response = requests.get(
-                        tree_url,
+                    tr = requests.get(
+                        f"https://api.github.com/repos/{name}/git/trees/{quote(branch, safe='/')}",
                         params={"recursive": "1"},
                         headers=HEADERS,
-                        timeout=25
+                        timeout=25,
                     )
-
-                    if tree_response.status_code != 200:
+                    if tr.status_code != 200:
                         continue
-
-                    files = tree_response.json().get("tree", [])
-
                     count = 0
-
-                    for file in files:
-
-                        path = file.get("path", "")
+                    for f in tr.json().get("tree", []):
+                        path = f.get("path", "")
                         low = path.lower()
-
                         if not low.endswith((".m3u", ".m3u8")):
                             continue
-
-                        if file.get("size", 0) > 5_000_000:
+                        if not any(k in low for k in KEYWORDS):
                             continue
-
-                        if file.get("size", 0) < 10:
-                            continue
-
-                        raw_url = (
-                            f"https://raw.githubusercontent.com/"
-                            f"{name}/{quote(branch, safe='/')}/"
-                            f"{quote(path, safe='/')}"
-                        )
-
                         found.append({
-                            "url": raw_url,
-                            "name": name + "/" + path
+                            "url": f"https://raw.githubusercontent.com/{name}/{quote(branch, safe='/')}/{quote(path, safe='/')}",
+                            "name": name + "/" + path,
                         })
-
                         count += 1
-
                         if count >= MAX_FILES_PER_REPO:
                             break
-
-                except Exception as e:
-                    print("Помилка репозиторію:", e)
-
-        except Exception as e:
-            print("Помилка GitHub:", e)
-
-    print("Нових джерел знайдено:", len(found))
-
+                except Exception:
+                    continue
+        except Exception:
+            continue
     return found
 
 
-# =====================================
-# ЗБЕРЕЖЕННЯ НОВИХ ДЖЕРЕЛ
-# =====================================
-
 def update_registry(new_sources):
-
     old = read_json(REGISTRY, [])
-    known = {
-        x.get("url")
-        for x in old
-        if isinstance(x, dict)
-    }
-
-    added = 0
-
+    known = {x.get("url") for x in old if isinstance(x, dict)}
     for item in new_sources:
         if item["url"] not in known:
             old.append(item)
             known.add(item["url"])
-            added += 1
-
     save_json(REGISTRY, old)
-
-    print("Додано нових джерел:", added)
-
-    return get_sources()
+    return old
 
 
-# =====================================
-# ЗАВАНТАЖЕННЯ ВМІСТУ ПЛЕЙЛИСТІВ
-# =====================================
-
-def parse_m3u(text):
-
-    items = []
-    info = None
-
-    for line in text.splitlines():
-
-        line = line.strip()
-
-        if line.startswith("#EXTINF"):
-            info = line
-
-        elif line.startswith("http") and info:
-            items.append((info, line))
-            info = None
-
-    return items
-    
-def parse_m3u(text):
-
-    items = []
-    info = None
-
-    for line in text.splitlines():
-
-        line = line.strip()
-
-        if line.startswith("#EXTINF"):
-            info = line
-
-        elif line.startswith("http") and info:
-            items.append((info, line))
-            info = None
-
-    return items
-
-
-# ФІЛЬТР КРАЇН
-def is_target_channel(info, source):
-    allowed = {
-        "UA", "UKR", "UKRAINE",
-        "RU", "RUS", "RUSSIA",
-        "BY", "BLR", "BEL", "BELARUS"
-    }
-
-    import re
-
-    match = re.search(
-        r'tvg-country="([^"]+)"',
-        info,
-        re.IGNORECASE
-    )
-
-    if match:
-        countries = re.split(r'[,;|]', match.group(1))
-        return any(c.strip().upper() in allowed for c in countries)
-
-    url = source.get("url", "").lower()
-
-    return any(
-        path in url
-        for path in (
-            "/countries/ua.m3u",
-            "/countries/ru.m3u",
-            "/countries/by.m3u"
-        )
-    )
-
-
-
+def get_sources():
+    sources = [{"url": u, "name": "Основне джерело"} for u in INITIAL_SOURCES]
+    for item in read_json(REGISTRY, []):
+        if isinstance(item, dict) and item.get("url", "").startswith("http"):
+            sources.append(item)
+    seen, result = set(), []
+    for s in sources:
+        if s["url"] not in seen:
+            seen.add(s["url"])
+            result.append(s)
+    return result
 
 
 def load_source(source):
-
-    url = source["url"]
-
     try:
-        response = requests.get(
-            url,
-            headers=HEADERS,
-            timeout=30
-        )
-
-        response.raise_for_status()
-
-        return parse_m3u(response.text)
-
-    except Exception as e:
-        print("Не вдалося прочитати:", source["name"])
+        return parse_m3u(load_text(source["url"]))
+    except Exception:
         return []
 
 
-# =====================================
-# ПЕРЕВІРКА ПРЯМИХ ПОСИЛАНЬ
-# =====================================
-
 def alive(item):
-
     info, url, source = item
-
     try:
-        with requests.get(
-            url,
-            headers=HEADERS,
-            stream=True,
-            timeout=(6, 10),
-            allow_redirects=True
-        ) as r:
-
+        with requests.get(url, headers=HEADERS, stream=True, timeout=(6, 10)) as r:
             if not 200 <= r.status_code < 300:
                 return item, False
-
-            content_type = r.headers.get(
-                "Content-Type", ""
-            ).lower()
-
-            if "text/html" in content_type:
+            if "text/html" in r.headers.get("Content-Type", "").lower():
                 return item, False
-
-            # Перевіряємо, чи сервер справді віддає дані
-            chunk = next(
-                r.iter_content(chunk_size=512),
-                b""
-            )
-
-            if not chunk:
-                return item, False
-
-            return item, True
-
+            chunk = next(r.iter_content(chunk_size=512), b"")
+            return item, bool(chunk)
     except Exception:
         return item, False
 
 
-# =====================================
-# ПОЗНАЧЕННЯ ДЖЕРЕЛА
-# =====================================
-
-def add_source(info, source):
-
-    comma = info.find(",")
-
-    if comma == -1:
-        return info
-
-    source = source.replace('"', "'")
-
-    return (
-        info[:comma]
-        + ' source="' + source + '"'
-        + info[comma:]
-    )
-
-
-# =====================================
-# ГОЛОВНА ФУНКЦІЯ
-# =====================================
-
 def build():
-
     start = time.time()
 
-    print("\n=== IPTV COLLECTOR ===")
-
-    # 1. Пошук нових джерел
     new = discover_github()
+    update_registry(new)
+    sources = get_sources()
 
-    # 2. Зберігаємо знайдені джерела
-    sources = update_registry(new)
-
-    print("\nУсього джерел:", len(sources))
-
-    # 3. Збираємо прямі URL
-    candidates = []
-    seen_urls = set()
+    candidates, seen_urls = [], set()
 
     for source in sources:
-
-        print("Читаю:", source["name"])
-
-        items = load_source(source)
-
-        for info, url in items:
-
-    # Залишаємо тільки Україну, Росію та Білорусь
-    if not is_target_channel(info, source):
-        continue
-
-    # Видаляємо тільки однакові URL
-            for info, url in items:
-
-            # Фільтр країн
-            if not is_target_channel(info, source):
+        for info, url in load_source(source):
+            if not is_target_channel(info, source["url"]):
                 continue
-
-            # Видаляємо однакові посилання
             if url in seen_urls:
                 continue
-
             seen_urls.add(url)
+            candidates.append((info, url, source["name"]))
 
-            candidates.append((
-                info,
-                url,
-                source["name"]
-            ))
-
-    # 4. Додаємо власні ручні посилання
     if os.path.exists(MANUAL):
+        with open(MANUAL, encoding="utf-8") as f:
+            for info, url in parse_m3u(f.read()):
+                if url not in seen_urls:
+                    seen_urls.add(url)
+                    candidates.append((info, url, "manual.m3u"))
 
-        manual_items = load_source({
-            "url": "file://" + MANUAL,
-            "name": "manual.m3u"
-        }) if False else []
-
-        try:
-            with open(MANUAL, encoding="utf-8") as f:
-                manual_items = parse_m3u(f.read())
-        except Exception:
-            manual_items = []
-
-        for info, url in manual_items:
-
-            if url not in seen_urls:
-                seen_urls.add(url)
-
-                candidates.append((
-                    info,
-                    url,
-                    "manual.m3u"
-                ))
-
-    print("\nЗібрано різних посилань:", len(candidates))
-
-    # 5. Перевірка всіх посилань
-    print("\nПеревіряю потоки...")
-
-    with ThreadPoolExecutor(MAX_WORKERS) as executor:
-        results = list(
-            executor.map(alive, candidates)
-        )
-
-    working = []
-    dead = []
+    with ThreadPoolExecutor(MAX_WORKERS) as ex:
+        results = list(ex.map(alive, candidates))
 
     history = read_json(HISTORY, {})
-
     now = datetime.now(timezone.utc).isoformat()
-
+    working = []
     for item, ok in results:
-
         info, url, source = item
-
-        history[url] = {
-            "source": source,
-            "last_check": now,
-            "status": "working" if ok else "dead"
-        }
-
+        history[url] = {"source": source, "last_check": now, "status": "working" if ok else "dead"}
         if ok:
             working.append(item)
-        else:
-            dead.append(url)
 
-    # 6. Створюємо один загальний плейлист
     with open(OUTPUT, "w", encoding="utf-8") as f:
-
         f.write("#EXTM3U\n")
-
         for info, url, source in working:
+            f.write(info + "\n" + url + "\n")
 
-            info = add_source(info, source)
-
-            f.write(info + "\n")
-            f.write(url + "\n")
-
-    # 7. Зберігаємо історію
     save_json(HISTORY, history)
 
-    elapsed = round(time.time() - start, 1)
-
-    print("\n======================")
-    print("ПОШУК ЗАВЕРШЕНО")
-    print("======================")
     print("Джерел:", len(sources))
     print("Знайдено URL:", len(candidates))
     print("Робочих:", len(working))
-    print("Неробочих:", len(dead))
-    print("Час:", elapsed, "секунд")
-    print("Плейлист:", OUTPUT)
-    print("======================")
+    print("Час:", round(time.time() - start, 1), "секунд")
 
-
-# =====================================
-# ЗАПУСК ТІЛЬКИ ВРУЧНУ
-# =====================================
 
 if __name__ == "__main__":
-    print("Починаю пошук IPTV...")
     build()
-
