@@ -366,8 +366,12 @@ def build():
         continue
 
     # Видаляємо тільки однакові URL
-    if url in seen_urls:
+    for info, url in manual_items:
+
+    if not is_target_channel(info, {"url": ""}):
         continue
+
+    if url not in seen_urls:
 
             seen_urls.add(url)
 
