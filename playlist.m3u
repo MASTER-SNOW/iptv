@@ -2989,3 +2989,5 @@ https://tsv.md/stream/hls/tsv-online/index.m3u8
 http://141.101.205.134:8080/hls/tvaist.m3u8
 #EXTINF:-1 group-title="Региональные", Кварц | Подольск
 http://109.94.1.3/25/index.m3u8
+#EXTINF:0,Yosso TV Мелодрама
+http://qs3mypsx.statgovlt.fun/iptv/4UKFQQWNWP7YQD/18139/index.m3u8
