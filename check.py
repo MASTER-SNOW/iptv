@@ -32,8 +32,8 @@ SEARCH_QUERIES = [
 
 KEYWORDS = ("ua", "ukr", "ukraine", "ru", "rus", "by", "bel", "belarus")
 
-MAX_REPOS_PER_QUERY = 5
-MAX_FILES_PER_REPO = 3
+MAX_REPOS_PER_QUERY = 10
+MAX_FILES_PER_REPO = 2
 MAX_WORKERS = 30
 
 
