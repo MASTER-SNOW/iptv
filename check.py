@@ -10,6 +10,7 @@ from urllib.parse import quote
 BASE = os.path.dirname(os.path.abspath(__file__))
 
 OUTPUT = os.path.join(BASE, "playlist.m3u")
+ADULT_OUTPUT = os.path.join(BASE, "adult.m3u")   # ← сюди
 REGISTRY = os.path.join(BASE, "sources.json")
 HISTORY = os.path.join(BASE, "history.json")
 MANUAL = os.path.join(BASE, "manual.m3u")
@@ -22,9 +23,15 @@ INITIAL_SOURCES = [
     "https://iptv-org.github.io/iptv/countries/by.m3u",
     "https://iptv-org.github.io/iptv/languages/ukr.m3u",
     "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8",
-    "https://iptv-org.github.io/iptv/categories/+18.m3u",
-    "https://iptv-org.github.io/categories/iptv/18+.m3u",
 ]
+
+ADULT_SOURCES = [
+    "https://iptv-org.github.io/iptv/categories/+18.m3u",
+    "https://raw.githubusercontent.com/iptvjs/iptv/main/adultiptv_all.m3u",
+    "https://raw.githubusercontent.com/portabl/iptv/master/tv%2B18.m3u",
+    "https://raw.githubusercontent.com/cooderiptv/iptv/main/adult.m3u",
+]
+
 
 SEARCH_QUERIES = [
     "iptv ukraine m3u",
@@ -177,6 +184,7 @@ def build():
     update_registry(new)
     sources = get_sources()
 
+    # === Звичайні канали ===
     candidates, seen_urls = [], set()
 
     for source in sources:
@@ -212,13 +220,36 @@ def build():
         for info, url, source in working:
             f.write(info + "\n" + url + "\n")
 
+    # === Дорослі канали (окремо) ===
+    adult_candidates, adult_seen = [], set()
+    for url in ADULT_SOURCES:
+        try:
+            for info, stream in parse_m3u(load_text(url)):
+                if stream not in adult_seen:
+                    adult_seen.add(stream)
+                    adult_candidates.append((info, stream, "adult"))
+        except Exception:
+            continue
+
+    with ThreadPoolExecutor(MAX_WORKERS) as ex:
+        adult_results = list(ex.map(alive, adult_candidates))
+
+    adult_working = []
+    for item, ok in adult_results:
+        info, url, source = item
+        history[url] = {"source": source, "last_check": now, "status": "working" if ok else "dead"}
+        if ok:
+            adult_working.append(item)
+
+    with open(ADULT_OUTPUT, "w", encoding="utf-8") as f:
+        f.write("#EXTM3U\n")
+        for info, url, source in adult_working:
+            f.write(info + "\n" + url + "\n")
+
     save_json(HISTORY, history)
 
     print("Джерел:", len(sources))
     print("Знайдено URL:", len(candidates))
-    print("Робочих:", len(working))
+    print("Робочих (звичайні):", len(working))
+    print("Робочих (дорослі):", len(adult_working))
     print("Час:", round(time.time() - start, 1), "секунд")
-
-
-if __name__ == "__main__":
-    build()
