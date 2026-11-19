@@ -22,7 +22,7 @@ INITIAL_SOURCES = [
     "https://iptv-org.github.io/iptv/countries/by.m3u",
     "https://iptv-org.github.io/iptv/languages/ukr.m3u",
     "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8",
-    "https://iptv-org.github.io/iptv/categories/movies.m3u",
+    "https://iptv-org.github.io/iptv/categories/kinoteatr.m3u",
     "https://iptv-org.github.io/iptv/YOSSO/ru.m3u",
 ]
 
