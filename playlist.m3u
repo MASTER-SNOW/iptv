@@ -555,6 +555,8 @@ https://cdn4.yayin.com.tr/kntv/tracks-v1a1/mono.m3u8
 http://176.118.197.101/Komediya/index.m3u8
 #EXTINF:-1 tvg-id="Komediynoe.ru@HD" tvg-logo="https://i.imgur.com/cEKe8XC.png" group-title="Comedy",Komediynoe HD (1080p)
 http://stream.mcquack.net/74/index.m3u8
+#EXTINF:-1 tvg-id="KongressTV.ru@SD" tvg-logo="https://tvcongress.ru/bitrix/templates/mbntheme/img/logo_tvc.svg" group-title="General",Kongress TV (1080p)
+https://live-3.otcnet.ru/congresstv/index.m3u8
 #EXTINF:-1 tvg-id="KrikTV.ru@SD" tvg-logo="https://i.imgur.com/rtuChZR.png" group-title="News",Krik-TV (1080p)
 http://cdn-01.bonus-tv.ru/kriktv_edge/playlist.m3u8
 #EXTINF:-1 tvg-id="Kuban24.ru@SD" tvg-logo="https://i.imgur.com/atzrXcz.png" http-user-agent="WINK/1.40.1 (AndroidTV/9) HlsWinkPlayer" group-title="General",Kuban 24 SD [Geo-blocked]
@@ -597,8 +599,6 @@ http://tvcdn01.esilnet.kz/tv/mir/index.m3u8
 http://mirbelogorya.ru:8080/mirbelogorya/index.m3u8
 #EXTINF:-1 tvg-id="MirSeriala.ru@SD" tvg-logo="https://i.imgur.com/uzj7wVp.png" group-title="Series",Mir Seriala (576p)
 http://176.118.197.101/MirSeriala/index.m3u8
-#EXTINF:-1 tvg-id="MMATVcom.ru@SD" tvg-logo="https://i.imgur.com/QhdxNsB.png" group-title="Sports",MMA-TV.com (1080p)
-https://streams2.sofast.tv/vglive-sk-462904/playlist.m3u8
 #EXTINF:-1 tvg-id="Moskva24.ru@SD" tvg-logo="https://i.imgur.com/gXbUMVy.png" group-title="General",Moskva 24 (1080p)
 https://stream.smotrim.ru/hls/givc8/playlist.m3u8?entity=channel&id=798&sign=37881ef2e289f062ceff0dca6c24dc58
 #EXTINF:-1 tvg-id="MoskvaDoveriye.ru@SD" tvg-logo="https://i.imgur.com/QDqDQzt.png" group-title="General",Moskva. Doveriye (576p)
@@ -947,6 +947,8 @@ http://31.148.5.241/Viasat_Sport/index.m3u8
 http://46.53.200.153:7777/play/a01l/index.m3u8
 #EXTINF:-1 tvg-id="VitrinaTV.ru@SD" tvg-logo="https://i.imgur.com/lzQsVfn.png" group-title="Shop",Vitrina TV (720p)
 https://live-11cinema.cdnvideo.ru/11cinema/11cinema/playlist.m3u8
+#EXTINF:-1 tvg-id="VIVARussia.ru@SD" tvg-logo="https://i.imgur.com/OFhQQCD.png" group-title="Music",VIVA Russia (1080p)
+https://183.giatvcdn.com/ssh101/ssh101/vivarussia/playlist.m3u8
 #EXTINF:-1 tvg-id="Vkus.ru@SD" tvg-logo="https://www.cableman.ru/sites/default/files/logo%20%287%29%20%281%29.png" group-title="Travel",Vkus (576p)
 http://178.134.1.158:8081/vkus/index.m3u8
 #EXTINF:-1 tvg-id="VmesteRF.ru@SD" tvg-logo="https://i.imgur.com/KI1qZNc.png" group-title="Undefined",Vmeste-RF (1080p)
@@ -1069,8 +1071,12 @@ http://alwifaklive.info:1935/live/myStream/playlist.m3u8
 http://istream.binarywaves.com:8081/hls/arabica/playlist.m3u8
 #EXTINF:-1 tvg-name="Россия 1" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Russia-1.svg/960px-Russia-1.svg.png" tvg-id="Russia1.ru" tvg-chno="2" tvg-country="RU" group-title="Russia",Россия 1
 https://live.smotrim.ru/vgtrk/0/russia1-hd/index.m3u8
+#EXTINF:-1 tvg-name="Карусель" tvg-logo="https://i.imgur.com/4fFMlVq.png" tvg-id="Karusel.ru" tvg-chno="9" tvg-country="RU" group-title="Russia",Карусель Ⓢ
+https://streaming102.interskytech.com/live/232.m3u8
 #EXTINF:-1 tvg-name="Звезда" tvg-logo="https://i.imgur.com/c0L0ncA.png" tvg-id="TelekanalZvezda.ru" tvg-chno="18" tvg-country="RU" group-title="Russia",Звезда
 https://tvchannelstream1.tvzvezda.ru/cdn/tvzvezda/playlist.m3u8
+#EXTINF:-1 tvg-name="Муз-ТВ" tvg-logo="https://i.imgur.com/Ml3qqOF.png" tvg-id="MuzTV.ru" tvg-chno="21" tvg-country="RU" group-title="Russia",Муз-ТВ Ⓢ
+https://streaming102.interskytech.com/live/618.m3u8
 #EXTINF:-1 tvg-name="CGTN Pусский" tvg-logo="https://i.imgur.com/fMsJYzl.png" tvg-id="CGTNRussian.cn" tvg-chno="24" tvg-country="RU" group-title="Russia",CGTN Pусский
 https://news.cgtn.com/resource/live/russian/cgtn-r.m3u8
 #EXTINF:-1 tvg-name="Че" tvg-logo="" tvg-id="PeretzInternational.ru" tvg-chno="27" tvg-country="RU" group-title="Russia",Че
@@ -1859,8 +1865,6 @@ https://stitch.teletarget.ru/vintera/movieseason/index.m3u8
 https://cdn-dvr.ntv.ru/Pes/tracks-v1a1/rewind-240.ts.m3u8
 #EXTINF:-0 group-title="Кино", Скорая помощь
 https://cdn-dvr.ntv.ru/Skoraja_pomosh/tracks-v1a1/rewind-240.ts.m3u8
-#EXTINF:-1 group-title="Кино", TV12
-http://185.221.213.254:8080/Mafia2/index.m3u8
 #EXTINF:-1 group-title="Кино", ТВ21
 http://stream.mcquack.net/152/index.m3u8
 #EXTINF:-1 group-title="Кино" tvg-id="viasat-history" tvg-logo="https://ngrch.github.io/iptv/logos/viju_history.png", Viju History
@@ -2273,18 +2277,12 @@ https://kinowalk.hopto.org/timetomovie_live
 https://kinowalk.hopto.org/blockbusterstime_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", Kinolampa
 https://kinowalk.hopto.org/kinolampa_live
-#EXTINF:-1 group-title="Кинозалы Kinowalk", VideoArsenal
-https://kinowalk.hopto.org/videoarsenal_live
-#EXTINF:-1 group-title="Кинозалы Kinowalk", Kino Jam
-https://kinowalk.hopto.org/kinojam_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", Scripach
 https://kinowalk.hopto.org/scripachtv_live
+#EXTINF:-1 group-title="Кинозалы Kinowalk", SeleCaoTV
+https://kinowalk.hopto.org/selecaotv_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", SeleCaoTV1
 https://kinowalk.hopto.org/selecaotv1_live
-#EXTINF:-1 group-title="Кинозалы Kinowalk", SerialTV
-https://kinowalk.hopto.org/serialtv_live
-#EXTINF:-1 group-title="Кинозалы Kinowalk", Serial4u
-https://kinowalk.hopto.org/serial4u_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", Alex.Films
 https://kinowalk.hopto.org/alex.films_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", Первый ряд
@@ -2317,8 +2315,6 @@ https://kinowalk.hopto.org/topmoment_live
 https://kinowalk.hopto.org/topmomentlive_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", Назад в СССР
 https://kinowalk.hopto.org/backtotheussr_live
-#EXTINF:-1 group-title="Кинозалы Kinowalk", VHS кино
-https://kinowalk.hopto.org/and7610_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", Cinema Time
 https://kinowalk.hopto.org/cinematime_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", IGROComp
@@ -2797,6 +2793,8 @@ http://stream.fastlnk.ru:88/Tverskojj_prospekt/index.m3u8
 http://rt-ct-tula-htlive.cdn.ngenix.net/hls/CH_R01_PERV_TUL/variant.m3u8
 #EXTINF:-1 group-title="Региональные", Первый Тульский (2) | Тульская область
 http://5.164.24.83/tula/1tv_hi/index.m3u8
+#EXTINF:-1 group-title="Региональные", Первый Псковский | Псковская область
+https://live-3.otcnet.ru/pskov/index.m3u8
 #EXTINF:-1 group-title="Региональные", ЯПервый | Ярославская область
 https://rt-ct-yarl-htlive.cdn.ngenix.net/hls/CH_R01_OTT_CT_YARL_NTM/variant.m3u8
 #EXTINF:-1 group-title="Региональные", Городской телеканал | Ярославская область
@@ -2809,6 +2807,8 @@ https://rt-ct-orl-htlive.cdn.ngenix.net/hls/CH_R01_PERVOBL/variant.m3u8
 https://rt-ct-orl-htlive.cdn.ngenix.net/hls/CH_R01_ISTOKI/variant.m3u8
 #EXTINF:-1 group-title="Региональные", Про жизнь | Кемеровская область
 https://rt-sib-nvkz-htlive.cdn.ngenix.net/hls/CH_R01_PROJIZN/variant.m3u8
+#EXTINF:-1 group-title="Региональные", Про жизнь (2) | Кемеровская область
+https://27trk.iptv2022.com/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="Региональные", Кузбасс Первый | Кемеровская область
 https://rt-sib-kem-htlive.cdn.ngenix.net/hls/CH_R01_OTT_SIB_KEM_GTRK/variant.m3u8
 #EXTINF:-1 group-title="Региональные", ЗРТК | Забайкальский край
@@ -2981,3 +2981,5 @@ http://212.2.225.30:1935/live/site.stream/playlist.m3u8
 https://tsv.md/stream/hls/tsv-online/index.m3u8
 #EXTINF:-1 group-title="Региональные", Аист | Орехово-Зуево
 http://141.101.205.134:8080/hls/tvaist.m3u8
+#EXTINF:-1 group-title="Региональные", Кварц | Подольск
+http://109.94.1.3/25/index.m3u8
