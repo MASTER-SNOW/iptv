@@ -1,4 +1,4 @@
-
+ґ
 import json
 import re
 import time
@@ -9,6 +9,8 @@ from concurrent.futures import ThreadPoolExecutor
 
 BASE_URL = "https://live.viks.tv/"
 OUTPUT = "viks_report.json"
+MANUAL_OUT = "manual.m3u"  # check.py бере цей файл і додає канали в playlist.m3u
+M3U8_RE = re.compile(r"https?://[^\s'\"<>\\]+?\.m3u8[^\s'\"<>\\]*")
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0"
@@ -117,6 +119,27 @@ def check_page(item):
     return result
 
 
+def find_stream(item):
+    name, page = item
+    try:
+        r = requests.get(page, headers=HEADERS, timeout=20)
+        r.raise_for_status()
+    except Exception:
+        return None
+    urls = M3U8_RE.findall(r.text)
+    return (name, urls[0]) if urls else None
+
+
+def write_streams(pages):
+    with ThreadPoolExecutor(max_workers=15) as pool:
+        found = [x for x in pool.map(find_stream, pages) if x]
+    with open(MANUAL_OUT, "w", encoding="utf-8") as f:
+        f.write("#EXTM3U\n")
+        for name, url in found:
+            f.write(f'#EXTINF:-1 group-title="Viks",{name}\n{url}\n')
+    print("Потоків знайдено:", len(found))
+
+
 def main():
     channels = get_catalog()
 
@@ -158,7 +181,10 @@ def main():
     print("З HLS-плеєром:", hls)
     print("Звіт:", OUTPUT)
 
+    write_streams([(x["name"], x["page"]) for x in results if x["status"] == "working"])
+
 
 if __name__ == "__main__":
     main()
       
+
