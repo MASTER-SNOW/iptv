@@ -59,6 +59,8 @@ https://ext.cdn.nashnet.tv/228.0.0.172/index.m3u8
 https://cdn15.live-tv.cloud/ua_infinitas_tv/inter-abr/playlist.m3u8
 #EXTINF:-1 tvg-id="IRT.ua@SD" tvg-logo="https://i.imgur.com/tDTUIRm.png" group-title="General",IRT (720p)
 https://stream.irt.ua/memfs/8fac7cbb-3356-4a03-bb77-4439b727ebd2.m3u8
+#EXTINF:-1 tvg-id="Islandia.ua@SD" tvg-logo="https://i.imgur.com/9ql4jXv.png" group-title="Undefined",Islandia (720p)
+https://cdn15.live-tv.cloud/ua_infinitas_tv/islandiya-abr/playlist.m3u8
 #EXTINF:-1 tvg-id="ITV.ua@SD" tvg-logo="https://i.imgur.com/NZdT9yJ.png" group-title="General",ITV (720p)
 http://cdn10.live-tv.od.ua:8081/itvrv/abr/playlist.m3u8
 #EXTINF:-1 tvg-id="IzmailTV.ua@SD" tvg-logo="https://i.imgur.com/CxsUpGz.png" group-title="General",Izmail TV (384p)
@@ -785,8 +787,6 @@ https://streams.prd.commavservices.eu/live/ebs/index.m3u8
 http://88.212.7.14/live/otv/playlist.m3u8
 #EXTINF:-1 tvg-id="RAZ3International.ua@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/b/bb/Raz_3_%282026%29.png" group-title="Undefined",RAZ 3 International
 https://dash2.antik.sk/live/kvartal_tv/playlist.m3u8
-#EXTINF:-1 tvg-name="Беларусь 1" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Belarus_1_logo.svg/960px-Belarus_1_logo.svg.png" tvg-id="Belarus1.by" tvg-chno="1" tvg-country="BY" group-title="Belarus",Беларусь 1
-https://edge55.dc.beltelecom.by/ngtrk/smil:belarus1.smil/playlist.m3u8
 #EXTINF:-1 tvg-name="ОНТ" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D1%82%D0%B5%D0%BB%D0%B5%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%C2%AB%D0%9E%D0%9D%D0%A2%C2%BB.svg/960px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D1%82%D0%B5%D0%BB%D0%B5%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%C2%AB%D0%9E%D0%9D%D0%A2%C2%BB.svg.png" tvg-id="ONT.by" tvg-chno="4" tvg-country="BY" group-title="Belarus",ОНТ Ⓢ
 https://ngtrk.dc.beltelecom.by/ngtrk/smil:ont.smil/playlist.m3u8
 #EXTINF:-1 tvg-name="Беларусь 24" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Belarus_24_logo.svg/960px-Belarus_24_logo.svg.png" tvg-id="Belarus24.by" tvg-country="BY" group-title="Belarus",Беларусь 24
@@ -1483,6 +1483,8 @@ http://176.118.197.101/Kinokomediya/index.m3u8
 https://stream8.cinerama.uz/1058/index.m3u8
 #EXTINF:-1 group-title="Кино" tvg-id="tv1000-russkoe-kino" tvg-logo="https://ngrch.github.io/iptv/logos/viju_russkoe.png", Viju TV1000 Русское
 https://flussonic.mkpnet.ru/tv-7510472b0133abb2/video.m3u8
+#EXTINF:-1 group-title="Кино" tvg-id="tv1000-russkoe-kino" tvg-logo="https://ngrch.github.io/iptv/logos/viju_russkoe.png", Viju TV1000 Русское (2)
+https://stream8.cinerama.uz/1059/index.m3u8
 #EXTINF:-1 group-title="Кино" tvg-id="tv1000-action" tvg-logo="https://ngrch.github.io/iptv/logos/viju_action.png", Viju TV1000 Action
 https://stream8.cinerama.uz/1225/index.m3u8
 #EXTINF:-1 group-title="Кино" tvg-id="tv1000-action" tvg-logo="https://ngrch.github.io/iptv/logos/viju_action.png", Viju TV1000 Action (3)
@@ -1579,12 +1581,16 @@ http://flussonic.mkpnet.ru/tv-687ba838ca927b9a/video.m3u8
 https://stream8.cinerama.uz/1266/index.m3u8
 #EXTINF:-1 group-title="Кино", Ретро (2)
 https://stream8.cinerama.uz/1047/index.m3u8
+#EXTINF:-1 group-title="Кино", 365 дней (2)
+https://stream8.cinerama.uz/1242/index.m3u8
 #EXTINF:-1 group-title="Путешествия" tvg-id="viasat-explore" tvg-logo="https://ngrch.github.io/iptv/logos/viju_explore.png", Viju Explore (2)
 https://flussonic.mkpnet.ru/tv-7c57a4c3f9a896ea/video.m3u8
 #EXTINF:-1 group-title="Путешествия", Dunyo bo'ylab
 https://stream8.cinerama.uz/1006/index.m3u8
 #EXTINF:-1 group-title="Путешествия", Terra Incognita
 https://stitch.teletarget.ru/vintera/terra/index.m3u8
+#EXTINF:-1 group-title="Путешествия", Точка.РФ (2)
+https://stream8.cinerama.uz/1222/index.m3u8
 #EXTINF:-1 group-title="Путешествия", Приключения
 https://stream8.cinerama.uz/1420/index.m3u8
 #EXTINF:-1 group-title="Путешествия", Моя планета
@@ -1707,8 +1713,6 @@ https://zabava-htlive.cdn.ngenix.net/hls/CH_DISNEY_2/variant.m3u8
 https://zabava-htlive.cdn.ngenix.net/hls/CH_DISNEY_4/variant.m3u8
 #EXTINF:-1 group-title="Детские" tvg-id="solnce-pl7" tvg-logo="https://ngrch.github.io/iptv/logos/solnce.png", Солнце +7
 https://zabava-htlive.cdn.ngenix.net/hls/CH_DISNEY_7/variant.m3u8
-#EXTINF:-1 group-title="Детские", СТС Kids
-https://stream8.cinerama.uz/1437/index.m3u8
 #EXTINF:-1 group-title="Детские", Мама
 https://stream8.cinerama.uz/1244/index.m3u8
 #EXTINF:-1 group-title="Детские", Ducktv
@@ -1997,8 +2001,12 @@ https://kinowalk.hopto.org/nezabudka_live
 https://kinowalk.hopto.org/frxnkl1n_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", Кладовая Фильмов
 https://kinowalk.hopto.org/skladfilm_live
+#EXTINF:-1 group-title="Кинозалы Kinowalk", RE_BOOT
+https://kinowalk.hopto.org/re_boot_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", 1st_witch
 https://kinowalk.hopto.org/witch_live
+#EXTINF:-1 group-title="Кинозалы Kinowalk", Мир Ехо
+https://kinowalk.hopto.org/mirdobro_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", Эра VHS
 https://kinowalk.hopto.org/vhs90s_live
 #EXTINF:-1 group-title="Кинозалы Kinowalk", АPRICUS
@@ -2143,8 +2151,6 @@ https://rt-ural-chel-htlive.cdn.ngenix.net/hls/CH_R01_TVIN_MAGN/variant.m3u8
 https://rt-sib-krsk-htlive.cdn.ngenix.net/hls/CH_R13_OTT_SIB_KRSK_RENTV/variant.m3u8
 #EXTINF:-1 group-title="Региональные", 8 канал | Красноярск
 http://rt-sib-krsk-htlive.cdn.ngenix.net/hls/CH_R02_OTT_SIB_KRSK_8CHANNEL/variant.m3u8
-#EXTINF:-1 group-title="Региональные", Енисей | Красноярск
-https://hls-eniseytv.cdnvideo.ru/eniseytv/stream1/playlist.m3u8
 #EXTINF:-1 group-title="Региональные", Енисей (2) | Красноярск
 https://rt-sib-krsk-htlive.cdn.ngenix.net/hls/CH_R01_OTT_SIB_KRSK_ENISEY/variant.m3u8
 #EXTINF:-1 group-title="Региональные", Енисей (3) | Красноярск
@@ -2291,6 +2297,8 @@ https://dagestan.mediacdn.ru/cdn/dagestan/index.m3u8
 https://bl.rutube.ru/livestream/5fa486bf465c8735fff9f41b372610cc/index.m3u8?s=-O-Abonlwf-bYzT5hrypYg&e=2070623505&scheme=https
 #EXTINF:-1 group-title="Региональные", Девятка | Киров
 https://rt-vlg-kirov-htlive.cdn.ngenix.net/hls/CH_R02_9TV/variant.m3u8
+#EXTINF:-1 group-title="Региональные", Девятка (2) | Киров
+https://devyatka.iptv2022.com/index.m3u8
 #EXTINF:-1 group-title="Региональные", Первый городской | Киров
 http://rt-vlg-kirov-htlive.cdn.ngenix.net/hls/CH_R03_PERVYGORODSKOY/variant.m3u8
 #EXTINF:-1 group-title="Региональные", Дон 24 | Ростов-на-Дону
