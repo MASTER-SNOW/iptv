@@ -166,8 +166,11 @@ def load_source(source):
 
 def alive(item):
     info, url, source = item
+    headers = dict(HEADERS)
+    if source == "manual.m3u":
+        headers["Referer"] = "https://live.viks.tv/"
     try:
-        with requests.get(url, headers=HEADERS, stream=True, timeout=(6, 10)) as r:
+        with requests.get(url, headers=headers, stream=True, timeout=(6, 10)) as r:
             if not 200 <= r.status_code < 300:
                 return item, False
             if "text/html" in r.headers.get("Content-Type", "").lower():
@@ -246,3 +249,4 @@ def build():
 
 if __name__ == "__main__":
     build()
+
