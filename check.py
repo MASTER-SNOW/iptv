@@ -216,7 +216,7 @@ def build():
 
     save_json(HISTORY, history)
 
-        summary = os.environ.get("GITHUB_STEP_SUMMARY")
+    summary = os.environ.get("GITHUB_STEP_SUMMARY")
     lines = [
         "### Звіт оновлення",
         f"- Джерел: {len(sources)}",
