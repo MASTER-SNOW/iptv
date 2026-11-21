@@ -216,11 +216,16 @@ def build():
 
     save_json(HISTORY, history)
 
-    print("Джерел:", len(sources))
-    print("Знайдено URL:", len(candidates))
-    print("Робочих:", len(working))
-    print("Час:", round(time.time() - start, 1), "секунд")
-
-
-if __name__ == "__main__":
-    build()
+        summary = os.environ.get("GITHUB_STEP_SUMMARY")
+    lines = [
+        "### Звіт оновлення",
+        f"- Джерел: {len(sources)}",
+        f"- Знайдено посилань: {len(candidates)}",
+        f"- Робочих: {len(working)}",
+        f"- Час: {round(time.time() - start, 1)} с",
+    ]
+    text = "\n".join(lines) + "\n"
+    print(text)
+    if summary:
+        with open(summary, "a", encoding="utf-8") as f:
+            f.write(text)
