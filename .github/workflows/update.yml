@@ -11,14 +11,23 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
+    
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
       - run: pip install requests
+
+      - name: Перевірка Viks TV
+        run: python viks.py
+
       - run: cp playlist.m3u old.m3u || touch old.m3u
+
       - run: python check.py
+
       - name: Звіт
         run: |
           names() { grep '^#EXTINF' "$1" | sed 's/.*,//' | sort -u; }
@@ -32,9 +41,11 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Видалено:**" >> $GITHUB_STEP_SUMMARY
           comm -23 old_names.txt new_names.txt | sed 's/^/- /' >> $GITHUB_STEP_SUMMARY || true
+
       - run: |
           git config user.name "bot"
           git config user.email "bot@example.com"
-          git add playlist.m3u 
+          git add playlist.m3u viks_report.json
           git commit -m "update playlist" || exit 0
-          git push
+          g
+          it push
