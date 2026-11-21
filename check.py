@@ -30,11 +30,11 @@ SEARCH_QUERIES = [
     "iptv russia m3u",
 ]
 
-KEYWORDS = ("ua", "ukr", "ukraine", "ru","russia", "rus", "by", "bel", "belarus")
+KEYWORDS = ("ua", "ukr", "ukraine", "ru", "rus", "by", "bel", "belarus")
 
-MAX_REPOS_PER_QUERY = 100
-MAX_FILES_PER_REPO = 10
-MAX_WORKERS =15
+MAX_REPOS_PER_QUERY = 5
+MAX_FILES_PER_REPO = 3
+MAX_WORKERS = 30
 
 REMOVE = []
 
@@ -68,7 +68,7 @@ def parse_m3u(text):
     return items
 
 
-def is_target_channel(info, source_url):
+def is_target_channel(info):
     allowed = {"UA", "UKR", "UKRAINE", "RU", "RUS", "RUSSIA", "BY", "BLR", "BEL", "BELARUS"}
     match = re.search(r'tvg-country="([^"]+)"', info, re.IGNORECASE)
     if match:
@@ -79,7 +79,9 @@ def is_target_channel(info, source_url):
 
 def discover_github():
     found = []
+    print("Шукаю нові GitHub-репозиторії...")
     for query in SEARCH_QUERIES:
+        print("Пошук:", query)
         try:
             r = requests.get(
                 "https://api.github.com/search/repositories",
@@ -88,6 +90,7 @@ def discover_github():
                 timeout=20,
             )
             if r.status_code != 200:
+                print("GitHub API:", r.status_code)
                 continue
             for repo in r.json().get("items", [])[:MAX_REPOS_PER_QUERY]:
                 if repo.get("archived"):
@@ -120,19 +123,23 @@ def discover_github():
                             break
                 except Exception:
                     continue
-        except Exception:
-            continue
+        except Exception as e:
+            print("Помилка GitHub:", e)
+    print("Нових джерел знайдено:", len(found))
     return found
 
 
 def update_registry(new_sources):
     old = read_json(REGISTRY, [])
     known = {x.get("url") for x in old if isinstance(x, dict)}
+    added = 0
     for item in new_sources:
         if item["url"] not in known:
             old.append(item)
             known.add(item["url"])
+            added += 1
     save_json(REGISTRY, old)
+    print("Додано нових джерел:", added)
     return old
 
 
@@ -152,7 +159,8 @@ def get_sources():
 def load_source(source):
     try:
         return parse_m3u(load_text(source["url"]))
-    except Exception:
+    except Exception as e:
+        print("Не вдалося прочитати:", source["name"], e)
         return []
 
 
@@ -176,12 +184,14 @@ def build():
     new = discover_github()
     update_registry(new)
     sources = get_sources()
+    print("Усього джерел:", len(sources))
 
     candidates, seen_urls = [], set()
 
     for source in sources:
+        print("Читаю:", source["name"])
         for info, url in load_source(source):
-            if not is_target_channel(info, source["url"]):
+            if not is_target_channel(info):
                 continue
             if url in seen_urls:
                 continue
@@ -194,6 +204,8 @@ def build():
                 if url not in seen_urls:
                     seen_urls.add(url)
                     candidates.append((info, url, "manual.m3u"))
+
+    print("Зібрано посилань:", len(candidates))
 
     with ThreadPoolExecutor(MAX_WORKERS) as ex:
         results = list(ex.map(alive, candidates))
@@ -216,16 +228,21 @@ def build():
 
     save_json(HISTORY, history)
 
-    summary = os.environ.get("GITHUB_STEP_SUMMARY")
+    elapsed = round(time.time() - start, 1)
     lines = [
         "### Звіт оновлення",
         f"- Джерел: {len(sources)}",
         f"- Знайдено посилань: {len(candidates)}",
         f"- Робочих: {len(working)}",
-        f"- Час: {round(time.time() - start, 1)} с",
+        f"- Час: {elapsed} с",
     ]
     text = "\n".join(lines) + "\n"
     print(text)
+    summary = os.environ.get("GITHUB_STEP_SUMMARY")
     if summary:
         with open(summary, "a", encoding="utf-8") as f:
             f.write(text)
+
+
+if __name__ == "__main__":
+    build()
