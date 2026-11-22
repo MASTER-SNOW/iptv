@@ -1,0 +1,40 @@
+name: Update playlist
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */3 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - run: cp playlist.m3u old.m3u || touch old.m3u
+      - run: python check.py
+      - name: Звіт
+        run: |
+          names() { grep '^#EXTINF' "$1" | sed 's/.*,//' | sort -u; }
+          names old.m3u > old_names.txt
+          names playlist.m3u > new_names.txt
+          echo "### Звіт оновлення" >> $GITHUB_STEP_SUMMARY
+          echo "Було: $(wc -l < old_names.txt), стало: $(wc -l < new_names.txt)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Додано:**" >> $GITHUB_STEP_SUMMARY
+          comm -13 old_names.txt new_names.txt | sed 's/^/- /' >> $GITHUB_STEP_SUMMARY || true
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Видалено:**" >> $GITHUB_STEP_SUMMARY
+          comm -23 old_names.txt new_names.txt | sed 's/^/- /' >> $GITHUB_STEP_SUMMARY || true
+      - run: |
+          git config user.name "bot"
+          git config user.email "bot@example.com"
+          git add playlist.m3u
+          git commit -m "update playlist" || exit 0
+          git push
