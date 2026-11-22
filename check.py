@@ -69,7 +69,7 @@ def parse_m3u(text):
 
 
 def is_target_channel(info):
-    allowed = {"UA", "UKR", "UKRAINE", "RU", "RUS", "RUSSIA", "BY", "BLR", "BEL", "BELARUS"}
+    allowed = {"UA", "UKR", "UKRAINE", "RU", "RUS", "RUSSIA", "BY", "BLR", "BEL", "BELARUS","Erotic","XXX","18+ ","Adult",}
     match = re.search(r'tvg-country="([^"]+)"', info, re.IGNORECASE)
     if match:
         countries = re.split(r"[,;|]", match.group(1))
