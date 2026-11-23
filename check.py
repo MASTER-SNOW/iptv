@@ -29,6 +29,8 @@ SEARCH_QUERIES = [
     "ukraine tv m3u",
     "ukrainian channels m3u",
     "iptv belarus m3u",
+    "iptv russia m3u",
+    
 ]
 
 MAX_REPOS_PER_QUERY = 10
