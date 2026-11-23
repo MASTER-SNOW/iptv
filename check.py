@@ -30,6 +30,10 @@ SEARCH_QUERIES = [
     "ukrainian channels m3u",
     "iptv belarus m3u",
     "iptv russia m3u",
+    "iptv Adult m3u",
+    "iptv Porn m3u",
+    "iptv erotica m3u",
+    "playlist Adult m3u",
     
 ]
 
