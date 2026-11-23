@@ -28,6 +28,9 @@ SEARCH_QUERIES = [
     "iptv ukraine m3u",
     "iptv belarus m3u",
     "iptv russia m3u",
+    "ukraine tv m3u",
+    "ukrainian channels m3u",
+    
 ]
 
 KEYWORDS = ("ua", "ukr", "ukraine","russia","Yosso" "ru", "rus", "by", "bel", "belarus")
