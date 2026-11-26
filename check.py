@@ -33,12 +33,23 @@ SEARCH_QUERIES = [
     "iptv adult m3u",
     "iptv Porn m3u",
     "iptv erotica m3u",
+    "iptv ukrainian channels",
+    "ua tv channels playlist",
+    "ukraine television m3u",
+    "ukraina iptv playlist",
+    "russian tv channels playlist",
+    "belarus tv channels playlist",
+    "UA RU BY IPTV",
+    "UA RU BY m3u8",
+    "ukr rus bel tv playlist",
+    "ua-ru-by channels",
+    
     
 ]
 
-MAX_REPOS_PER_QUERY = 10
-MAX_FILES_PER_REPO = 5
-MAX_WORKERS = 30
+MAX_REPOS_PER_QUERY = 100
+MAX_FILES_PER_REPO = 10
+MAX_WORKERS = 50
 
 REMOVE = []
 
