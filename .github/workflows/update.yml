@@ -19,6 +19,8 @@ jobs:
       - run: pip install requests
       - run: cp playlist.m3u old.m3u || touch old.m3u
       - run: python check.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GH_TOKEN }}
       - name: Звіт
         run: |
           names() { grep '^#EXTINF' "$1" | sed 's/.*,//' | sort -u; }
