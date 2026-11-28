@@ -243,6 +243,8 @@ http://serv25.vintera.tv:8081/test/k16/playlist.m3u8
 https://stream8.cinerama.uz/1227/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-id="CityEdenAutoGid.ru@HD" tvg-logo="https://i.imgur.com/qpe8L27.png" group-title="Auto",City Eden AutoGid [Not 24/7]
 https://cityeden.catcast.tv/content/47515/index.m3u8
+#EXTINF:-1 tvg-id="CityEdenBirmaPlay.ru@HD" tvg-logo="https://i.imgur.com/38Q5L5W.png" group-title="Music",City Eden Birma Play [Not 24/7]
+https://cityeden.catcast.tv/content/34364/index.m3u8
 #EXTINF:-1 tvg-id="CityEdenClassicMusic.ru@HD" tvg-logo="https://i.imgur.com/l7BE8l6.png" group-title="Music",City Eden Classic Music [Not 24/7]
 https://cityeden.catcast.tv/content/47400/index.m3u8
 #EXTINF:-1 tvg-id="CityEdenKinoAction.ru@HD" tvg-logo="https://i.imgur.com/uuzuvD0.png" group-title="Movies",City Eden KinoAction [Not 24/7]
@@ -807,8 +809,6 @@ https://op-flashcon-digdayahd-1.dens.tv/h/h305/stream.m3u8
 http://88.212.7.14/live/otv/playlist.m3u8
 #EXTINF:-1 tvg-id="RAZ3International.ua@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/b/bb/Raz_3_%282026%29.png" group-title="Undefined",RAZ 3 International
 https://dash2.antik.sk/live/kvartal_tv/playlist.m3u8
-#EXTINF:-1 tvg-name="Беларусь 1" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Belarus_1_logo.svg/960px-Belarus_1_logo.svg.png" tvg-id="Belarus1.by" tvg-chno="1" tvg-country="BY" group-title="Belarus",Беларусь 1
-https://edge55.dc.beltelecom.by/ngtrk/smil:belarus1.smil/playlist.m3u8
 #EXTINF:-1 tvg-name="Беларусь 2" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Belarus_2_logo.svg/960px-Belarus_2_logo.svg.png" tvg-id="Belarus2.by" tvg-country="BY" group-title="Belarus",Беларусь 2
 https://edge55.dc.beltelecom.by/ngtrk/smil:belarus2.smil/playlist.m3u8
 #EXTINF:-1 tvg-name="Беларусь 3" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Belarus_3_logo.svg/960px-Belarus_3_logo.svg.png" tvg-id="Belarus3.by" tvg-country="BY" group-title="Belarus",Беларусь 3
@@ -1539,8 +1539,6 @@ https://flussonic.mkpnet.ru/tv-c922a9201f5073f8/video.m3u8
 http://stitch.teletarget.ru/api/v1/hls/vintera/neplaneta/index.m3u8
 #EXTINF:-1 tvg-logo="https://mbmh5s36ok.a.trbcdn.net/572aecd6-static/channel/10386/logo_256_1658737079.png" group-title="Пізнавальні | RUS" tvg-language="rus" tvg-id="Neizvestnayaplaneta.ru",Неизвестная планета
 https://mhd116.iptv2022.com/x/47xnv8ItCqSDs_gmCjLgIQ,1788763889/streaming/np/324/1/index.m3u8
-#EXTINF:-1 group-title="Пізнавальні | RUS" tvg-language="rus" tvg-id="Okhotairybalka.ru",Охота и Рыбалка
-http://195.64.140.147:10039/39
 #EXTINF:-1 group-title="Пізнавальні | RUS" tvg-language="rus" tvg-id="Okhotairybalka.ru",Охота и рыбалка
 http://tv.ttk.mx:9034
 #EXTINF:-1 group-title="Пізнавальні | RUS" tvg-language="rus" tvg-id="Okhotairybalka.ru",Охота и рыбалка
@@ -1997,8 +1995,6 @@ http://kinowalk.hopto.org/x-x-vanes-x-x_live
 https://kinowalk.hopto.org/kinoteka_full_hd_top_live
 #EXTINF:-1 group-title="Фільми | RUS" tvg-language="rus" tvg-id="Kinouzhas.ru",Киноужас
 http://195.64.140.147:10043/43
-#EXTINF:-1 group-title="Фільми | RUS" tvg-language="rus" tvg-id="Kinouzhas.ru",Киноужас
-http://tv.ttk.mx:9193
 #EXTINF:-1 group-title="Фільми | RUS" tvg-language="rus" tvg-id="KinoHit.ru",Кинохит
 http://195.64.140.147:10046/46
 #EXTINF:-1 group-title="Фільми | RUS" tvg-language="rus" tvg-id="KinoHit.ru",Кинохит
